@@ -6,8 +6,8 @@ const ErrorPage = () => {
     <div className="big-container">
         <div className='error-container'>
             <h1>You typed a wrong URL!</h1>
-            <Link to="/apicall">
-                <a href="about.html" class="more"> Homepage </a>
+            <Link to="/apicall" className='more'>
+                Homepage
             </Link>
         </div>
     </div>
