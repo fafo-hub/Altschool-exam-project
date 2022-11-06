@@ -3,8 +3,9 @@ import UserCard from './userCard'
 //import MoreInfo from "./moreInfo";
 import { Link } from "react-router-dom";
 
-const ApiCall = ({currentPost, postsPerPage, paginate, totalPost}) => {
+const ApiCall = ({currentPost, postsPerPage, paginate, totalPost, profile}) => {
     const pageNumbers = [];
+    //console.log(profile);
   
   for ( let i = 1; i <= Math.ceil(totalPost / postsPerPage); i++) {
       pageNumbers.push(i)
@@ -19,9 +20,9 @@ const ApiCall = ({currentPost, postsPerPage, paginate, totalPost}) => {
         <div className="box-container">
            {currentPost.map((user, i) => (
               <div key={i}>
-                <Link>
-                    <UserCard userData={user} />
-                </Link>
+                
+                    <UserCard userData={user} profile={profile} />
+                
                 {/* <MoreInfo userData = {user}/> */}
               </div>
             ))}
@@ -37,6 +38,10 @@ const ApiCall = ({currentPost, postsPerPage, paginate, totalPost}) => {
         </Link>
     </section>
 
+
+    {/* <Routes>
+      <Route path = "/moreinfo" element = {<MoreInfo />}/>
+    </Routes> */}
     </div>
   )
 }

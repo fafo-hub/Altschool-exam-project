@@ -35,7 +35,10 @@ function App() {
     fetch("https://api.github.com/users/fafo-hub/repos")
     .then((response) => response.json())
     .then((data) => { setProfile(data)
+      //console.log(data);
     })
+
+    
     
   }
   
@@ -43,9 +46,19 @@ function App() {
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPost = profile.slice(indexOfFirstPost, indexOfLastPost)
 
-  useEffect(() => {ReusableAPI()},  []);
+  //useEffect(() => {ReusableAPI()},  []);
+  try{
+    //Runs this code when no error
+    useEffect(() => {ReusableAPI()},  []);
+} catch(err) {
+  //Runs this code when there an error
+        //console.log(err.message);
+        //setResultScreen(<p style={{color:'red', fontSize: 12}}>Syntax error: {err.message}</p>)
+        console.log(err.message);
+}
   
-  
+
+
   const paginate = (pageNumbers) => {
       setPage(pageNumbers)
   };
@@ -57,7 +70,7 @@ function App() {
       <section className="main-container">
       <Routes>
         <Route path="/" element={<Jumbo />} />
-        <Route path="/apicall" element={<ApiCall currentPost = {currentPost} postsPerPage = {postsPerPage} paginate = {paginate} totalPost = {profile.length} />} />
+        <Route path="/apicall/*" element={<ApiCall currentPost = {currentPost} postsPerPage = {postsPerPage} paginate = {paginate} totalPost = {profile.length} profile={profile} />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
     </section>

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from "react-router-dom";
+import { Routes, Route, Link } from "react-router-dom";
 import MoreInfo from './moreInfo';
 
 const UserCard = ({ userData }) => {
@@ -12,20 +12,11 @@ const UserCard = ({ userData }) => {
     <div>
        <section className="box">
         <p><Link to="./moreinfo" >{gitUrl}</Link></p>
-           {/* <img
-             className="user-image"
-             src={userData.picture.large}
-             alt="userProfilePicture"
-            />
-           <div className='user-text'>
-              <p>{userName}</p>
-              <p>{ages}</p>
-              <p>{genders}</p>
-              <p>{house}</p>
-              <p>{mail}</p>
-           </div> */}
        </section>
-       {/* <MoreInfo /> */}
+      
+      <Routes>
+      <Route path = "/moreinfo" element = {<MoreInfo userData={userData} />}/>
+    </Routes>
     </div>
   )
 }
