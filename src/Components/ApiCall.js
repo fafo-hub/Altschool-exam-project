@@ -30,12 +30,14 @@ const ApiCall = ({currentPost, postsPerPage, paginate, totalPost, profile}) => {
         <div className="page-flex">
             {pageNumbers.map(number => 
                 (<p key={number}>
-                    <Link className="btn active" onClick={ () => paginate(number)} >{number}</Link>
+                    <Link style={{width:'100px'}} className="btn active" onClick={ () => paginate(number)} >{number}</Link>
                 </p>))}
         </div>
-        <Link className="more">
+        <div className="home-comp">
+        <Link to={"/"} className="more">
            Home
         </Link>
+        </div>
     </section>
 
 

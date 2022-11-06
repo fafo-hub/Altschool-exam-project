@@ -141,7 +141,7 @@ body {
   gap: 2px;
   justify-content: center;
   margin-bottom: 10px;
-  margin-top: 30px;
+  margin-top: 70px;
 }
 
 
@@ -152,6 +152,7 @@ body {
   height: 50px;
   width: 50px;
   background-color: var(--title-color);
+  padding: 20px;
 }
 
 
@@ -182,6 +183,12 @@ body {
   font-size: 2rem;
   margin: 35px 0 30px 30px;
   color: #fff;
+}
+
+.home-comp {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
 }
 
 

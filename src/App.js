@@ -5,6 +5,7 @@ import './App.css';
  //import UserCard from './Components/userCard';
  import ApiCall from './Components/ApiCall'
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+//import MoreInfo from "./Components/moreInfo"
 
 //Page One
 const Jumbo = () => {
@@ -12,7 +13,7 @@ const Jumbo = () => {
     <section className="home-container">
     <div className="content">
       <h3 className="content-text">Olatunde Fafolahan</h3>
-      <p className="jumbo-mini-text">AltSchool Assignment 2</p>
+      <p className="jumbo-mini-text">AltSchool Exam Project</p>
       <Link to="/apicall" className="more">
         Click Here
       </Link>
