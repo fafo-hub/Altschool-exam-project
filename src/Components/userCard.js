@@ -1,22 +1,18 @@
 import React from 'react'
-import { Routes, Route, Link } from "react-router-dom";
-import MoreInfo from './moreInfo';
+import { Link } from "react-router-dom";
 
-const UserCard = ({ userData }) => {
-  //const userName = `${userData.name.title} ${userData.name.first} ${userData.name.last}`;
-   const gitUrl = `${userData.git_url}`;
-  // const ages = `${userData.dob.age}`;
-  // const house = `${userData.location.city}`;
-  // const mail = `${userData.email}`;
+
+const UserCard = ({ currentPost}) => {
+  localStorage.setItem('repoData', JSON.stringify(currentPost))
   return (
     <div>
-       <section className="box">
-        <p><Link to="./moreinfo" >{gitUrl}</Link></p>
-       </section>
-      
-      <Routes>
-      <Route path = "/moreinfo" element = {<MoreInfo userData={userData} />}/>
-    </Routes>
+        <div className="box-container">
+           {currentPost.map((user, i) => (
+              <div key={i} >
+                  <Link className='repo-link' style={{color:'white'}} to={`/apicall/${user.id}`} >{user.git_url}/</Link>
+              </div>
+            ))}
+        </div>
     </div>
   )
 }

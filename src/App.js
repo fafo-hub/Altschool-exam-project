@@ -2,10 +2,9 @@ import React from "react";
 import { useState, useEffect } from "react";
 import './App.css';
  import ErrorPage from './Components/error';
- //import UserCard from './Components/userCard';
  import ApiCall from './Components/ApiCall'
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-//import MoreInfo from "./Components/moreInfo"
+import MoreInfo from "./Components/moreInfo";
 
 //Page One
 const Jumbo = () => {
@@ -23,10 +22,6 @@ const Jumbo = () => {
 };
 
 
-
-//Page Two
-
-
 function App() {
  const [profile, setProfile] = useState([]);
   const [page, setPage] = useState(1)
@@ -36,46 +31,31 @@ function App() {
     fetch("https://api.github.com/users/fafo-hub/repos")
     .then((response) => response.json())
     .then((data) => { setProfile(data)
-      //console.log(data);
     })
-
-    
-    
   }
   
   const indexOfLastPost = page * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPost = profile.slice(indexOfFirstPost, indexOfLastPost)
 
-  //useEffect(() => {ReusableAPI()},  []);
-  try{
-    //Runs this code when no error
     useEffect(() => {ReusableAPI()},  []);
-} catch(err) {
-  //Runs this code when there an error
-        //console.log(err.message);
-        //setResultScreen(<p style={{color:'red', fontSize: 12}}>Syntax error: {err.message}</p>)
-        console.log(err.message);
-}
-  
-
 
   const paginate = (pageNumbers) => {
       setPage(pageNumbers)
   };
 
-
   return (
     <Router>
       <div className="App">
-      <section className="main-container">
+        <section className="main-container">
       <Routes>
         <Route path="/" element={<Jumbo />} />
-        <Route path="/apicall/*" element={<ApiCall currentPost = {currentPost} postsPerPage = {postsPerPage} paginate = {paginate} totalPost = {profile.length} profile={profile} />} />
+        <Route path="/apicall" element={<ApiCall currentPost = {currentPost} postsPerPage = {postsPerPage} paginate = {paginate} totalPost = {profile.length} profile={profile} />} />
+        <Route path="/apicall/:id" element={<MoreInfo />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
-    </section>
-    </div>
+        </section>
+      </div>
     </Router>
   );
 }
